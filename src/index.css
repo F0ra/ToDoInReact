@@ -47,3 +47,75 @@ li{
   filter: blur(3px);
   opacity: 0.6;
 }
+
+
+@media only screen and (max-width: 195px) {
+  #root {
+    display: none;
+  }
+  .chill{
+    position: absolute;
+    display: block;
+    width: 150px;
+    height: 80px;
+    padding-top: 10px;
+    background-color: orange;
+    -ms-transform: rotate(10deg); /* IE 9 */
+    -webkit-transform: rotate(10deg); /* Safari 3-8 */
+    transform: rotate(10deg);
+  }
+  
+}
+
+@media only screen and (min-width: 195px) {
+  .chill{
+    display: none;
+  }
+  #root {
+    font-size: 17px;
+  }
+  .dropdown-menu-button-small{
+    display: inherit;
+  }
+  .dropdown-menu-button-defolt{
+    display: none;
+  }
+  .dell-all-button{
+    display: none;
+  }
+}
+
+@media only screen and (min-width: 340px) {
+  #root {
+    font-size: 17px;
+  }
+  .dell-all-button{
+    display: initial;
+  }
+  .dropdown-menu-button-small{
+    display: none;
+  }
+  .dropdown-menu-button-defolt{
+    display: inherit;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  #root {
+    font-size: 21px;
+    text-indent: 10px;
+  }
+  h4{
+    font-size: 32px;
+  }
+} 
+
+@media only screen and (min-width: 992px) {
+  #root {
+    font-size: 25px;
+    text-indent: 15px;
+  }
+  h4{
+    font-size: 34px;
+  }
+} 

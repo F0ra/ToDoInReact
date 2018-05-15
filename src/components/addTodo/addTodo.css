@@ -4,6 +4,10 @@
     /* margin-bottom: 5px; */
     
 }
+.add-todo-button{
+    /* border-radius: 5px;
+    background-color: tomato; */
+}
 
 .tooltipz {
     z-index: 101;
@@ -14,7 +18,7 @@
 .tooltipz .tooltiptext {
     visibility: hidden;
     width: 140px;
-    background-color: orangered;
+    background-color: rgb(121, 121, 121, 0.9);
     color: #fff;
     text-align: center;
     border-radius: 6px;
@@ -34,7 +38,7 @@
     margin-left: -5px;
     border-width: 5px;
     border-style: solid;
-    border-color: transparent transparent orangered transparent;
+    border-color: transparent transparent rgb(121, 121, 121, 0.9) transparent;
 
 }
 

@@ -15,7 +15,7 @@ export const DellAllDoneButton = (props)=>{
 
     return(
         <button type="button"
-         className="btn btn-outline-danger"
+         className="btn btn-outline-danger dell-all-button"
           onClick={dellAllCompliteHandler}>dell done</button>
         );
     };
