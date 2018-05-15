@@ -1,0 +1,50 @@
+.toDolist-button-group {
+  margin: -5px;
+  float: right;
+}
+.list-group-item{
+  overflow: hidden;
+  /* margin-top: 20px; */
+  margin-bottom: 20px;
+  padding: 10px;
+  transition: all 0.3s ease-in-out;
+  
+}
+.mark-dell-element-button{
+margin: 1px;   
+}
+
+
+:root {
+--margin-offset: 100px; 
+}
+
+.animate-todo-element {
+/* Safari 4.0 - 8.0 */
+-webkit-animation-name: animationTodo;
+-webkit-animation-duration: 0.7s;
+-webkit-animation-timing-function: linear;
+-webkit-animation-fill-mode: forwards;
+/* Standard syntax */
+animation-name: animationTodo;
+animation-duration: 0.7s;
+animation-timing-function: linear;
+animation-fill-mode: forwards;
+/* transform: scaleX(0.02)  translateX(500px); */
+
+/* background-color: red; */
+/* transition: all 1s ease-in-out; */
+}
+
+@-webkit-keyframes animationTodo {
+  0%   {}
+  40%  {color: red;background-color:red; transform: scaleX(0.01) ; margin-left: var(--margin-offset)}
+  100% {transform:  scaleX(0.01) translateY(-900px) ;margin-left: var(--margin-offset)}
+}
+
+/* Standard syntax */
+@keyframes animationTodo {
+0%   {}
+40%  {color: red;background-color:red; transform: scaleX(0.01) ; margin-left: var(--margin-offset)}
+100% {transform:  scaleX(0.01) translateY(-900px) ;margin-left: var(--margin-offset)}
+}

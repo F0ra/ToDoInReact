@@ -1,0 +1,44 @@
+.input-todo-form{
+    margin-top: 10px;
+    margin-bottom: 15px;
+    /* margin-bottom: 5px; */
+    
+}
+
+.tooltipz {
+    z-index: 101;
+    position: relative;
+    display: inline-block;
+}
+
+.tooltipz .tooltiptext {
+    visibility: hidden;
+    width: 140px;
+    background-color: orangered;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+    position: absolute;
+    z-index: 1;
+    top: 150%;
+    left: 10%;
+    margin-left: -60px;
+}
+
+.tooltipz .tooltiptext::after {
+    content: "";
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: transparent transparent orangered transparent;
+
+}
+
+.tooltipz:hover .tooltiptext {
+    visibility: visible;
+    transition-delay:0.5s;
+}

@@ -1,0 +1,49 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+  overflow: hidden;
+}
+
+ul{
+  list-style-type: none;
+  margin: 0px;
+  padding: 0px;
+}
+li{
+  margin: 0px;
+  padding: 0px;
+}
+
+#root{
+  z-index: 100;
+  position: absolute;
+  width: 100%;
+}
+
+#wrapper {
+  height:100%;
+  width:100%;
+  position:absolute;
+  overflow: hidden;
+}
+
+#wrapper canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 1950px;
+  height: auto; 
+}
+
+#canvas {
+  z-index: 1;
+}
+#canvasbg {
+  z-index: -10;
+  -webkit-filter: blur(3px);
+  -moz-filter: blur(3px);
+  -o-filter: blur(3px);
+  filter: blur(3px);
+  opacity: 0.6;
+}
