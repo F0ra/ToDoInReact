@@ -9,7 +9,7 @@ export function timeTravel(reducer) {
     return function (state = initialState, action) {
       const { past, present, future } = state;
       let newState = {};
-      const historyDeep = 20;//how much state snapshot to remember
+      const historyDeep = 20;//how much state snapshots to remember
 
       switch (action.type) {
             case 'UNDO':
@@ -62,6 +62,14 @@ export function timeTravel(reducer) {
                 newState.timeTravel.canUndo = newState.past.length>0;
                 newState.timeTravel.canRedo = newState.future.length>0;
                 return newState;
+
+            case 'LOAD_STATE_FROM_LOCALSTORAGE':
+                if(localStorage.todoState.length){
+                    newState = JSON.parse(localStorage.todoState);
+                    action.payload.cb();
+                    return newState;
+                }
+                return state;
             
 
             default:
@@ -80,6 +88,7 @@ export function timeTravel(reducer) {
                 }
                 newState.timeTravel.canUndo = newState.past.length>0;
                 newState.timeTravel.canRedo = newState.future.length>0;
+                localStorage.todoState = JSON.stringify(newState);
                 return newState;
       }
     }

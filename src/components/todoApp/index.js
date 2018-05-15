@@ -4,6 +4,7 @@ import * as todoActions from "../../actions/todoActions";
 import * as timeTravelActions from "../../actions/undoRedoActions";
 import * as viewModeActions from "../../actions/viewModeActions";
 import * as paginationActions from "../../actions/paginationActions";
+import * as defaultActions from "../../actions/defaultActions";
 import { connect } from "react-redux";
 import { Addtodo } from "../addTodo";
 import { DellMarkGroup } from "../dellMarkButtonGroup";
@@ -11,27 +12,35 @@ import { ViewTodoList } from "../viewTodoList";
 import { UndoRedoGroup } from "../undoRedoGroup";
 import { ViewModeGroup } from "../viewModeGroup";
 import { Title } from "../title";
+import { StateLoadInfo } from "../stateLoadInfo";
+
 
 
 
 class TodoApp extends React.Component {
-  // componentWillMount() {
-  //   // fires immediately before the initial render
-  //   const firstAction = this.props.paginationActions.setCurentPage(2)
-  //   const secondAction = this.props.paginationActions.setCurentPage(11)
-    
-  //   this.props.timeTravelActions.multipleActions([firstAction,secondAction])
-  //   }
+  constructor(props){
+    super(props);
+    this.state={todosStateLoaded:false}
+  }
+
+  componentDidMount() {
+    this.props.defaultActions.loadState(
+      ()=>{
+        this.setState({todosStateLoaded:true})}
+    );
+  };
+
   render() {
+    const StateInfo = this.state.todosStateLoaded ? <StateLoadInfo/> : null
   return (
       <div className="Todo-app">
+        {StateInfo}
         <UndoRedoGroup actions={this.props.timeTravelActions} canUndo={this.props.timeTravel.canUndo} canRedo={this.props.timeTravel.canRedo}/>
         <Title stats={this.props.todos.todosStat}/>
-      <div>
-      
-        <ViewModeGroup actions={this.props.viewModeActions} viewMode={this.props.viewMode}/>
-        <DellMarkGroup actions={this.props.todoActions} />
-      </div>
+        <div>
+          <ViewModeGroup actions={this.props.viewModeActions} viewMode={this.props.viewMode}/>
+          <DellMarkGroup actions={this.props.todoActions} />
+        </div>
         <Addtodo actions={this.props.todoActions}
           paginationActions={this.props.paginationActions}
           multipleActions={this.props.timeTravelActions.multipleActions}/>
@@ -72,6 +81,9 @@ const mapDispatchToProps = dispatch => {
       paginationActions:{
         resetPagination : (curentPage,totalPages)=> dispatch(paginationActions.resetPagination(curentPage,totalPages)),
         setCurentPage : (curentPage)=> dispatch(paginationActions.setCurentPage(curentPage))
+      },
+      defaultActions:{
+        loadState : (cb)=> dispatch(defaultActions.loadState(cb))
       }
     }
   }
