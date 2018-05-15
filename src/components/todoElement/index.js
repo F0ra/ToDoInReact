@@ -5,28 +5,27 @@ import './todoElement.css';
 
 export const TodoElement = (props) => {
     const dellTodoHandler = (e) => {
-        // const element = e.target.parentElement.parentElement;
-        const element = e.target.parentNode.parentNode
+        e.stopPropagation();
+        let element = e.target.parentNode.parentNode;
+        if(element.tagName!=="LI") element = element.parentNode;
+        
         element.classList.add("animate-todo-element");
-        const randomOffset = Math.floor((Math.random()-0.5)*500);
-        element.style.setProperty('--margin-offset', randomOffset + 'px');
-        setTimeout(()=>{props.actions.dellTodo(props.id,props.complited)},700)
-        // props.actions.dellTodo;
+        const randomOffset = Math.floor((Math.random()-0.5)*500);//get random value for css animation
+        element.style.setProperty('--margin-offset', randomOffset + 'px');//pass randome value to css animation
+        setTimeout(()=>{props.actions.dellTodo(props.id,props.complited)},700);
     }
-        //dellTodo needs id as arg
+
     const markCompleteTodoHandler = props.actions.markTodo;
-        //markTodo needs id as arg
     const editTodoHandler = props.actions.startEditTodo;
-        //editTodoHandler needs id as arg
     const stopEditingHandler = props.actions.stopEditTodo;
-        //stopEditingHandler needs event and id as args
+
     const handleKeyPress = (event) => {
         if(event.key === 'Enter' & props.isEditing){
             stopEditingHandler(event,props.id)
-        }
-    }   
+        };
+    };   
 
-    if(props.className==="EditMode"){
+    if(props.isEditing){
         return(
 
         <li onBlur = {(e)=>stopEditingHandler(e,props.id)}
@@ -35,12 +34,17 @@ export const TodoElement = (props) => {
         className = {`list-group-item list-group-item-secondary mark-for-dell-all-button`}>
         
         {props.value}
+
         <div className="toDolist-button-group">
-        
-        <button className="btn btn-outline-success mark-dell-element-button" onClick={()=>markCompleteTodoHandler(props.id)} contentEditable={false}>mark</button>
-        <button className="btn btn-outline-danger mark-dell-element-button" onClick={(e)=>dellTodoHandler(e,props.id,props.complited)} contentEditable={false}>dell</button>
-        </div>   
-        
+            <button onClick={()=>markCompleteTodoHandler(props.id)}
+                className="btn btn-success mark-dell-element-button">
+                <i className="fa fa-check-square-o icon-from-mark-dell-button" >
+                </i></button>
+            <button onClick={(e)=>dellTodoHandler(e,props.id,props.complited)}
+                className="btn btn-danger mark-dell-element-button">
+                <i  className="fa fa-trash-o icon-from-mark-dell-button" >
+                </i></button>
+            </div>   
         </li>
         )
     };
@@ -61,9 +65,13 @@ export const TodoElement = (props) => {
             
             <div className="toDolist-button-group">
             <button onClick={()=>markCompleteTodoHandler(props.id)}
-                className="btn btn-outline-success mark-dell-element-button">mark</button>
+                className="btn btn-success mark-dell-element-button">
+                <i className="fa fa-check-square-o icon-from-mark-dell-button" >
+                </i></button>
             <button onClick={(e)=>dellTodoHandler(e,props.id,props.complited)}
-                className="btn btn-outline-danger mark-dell-element-button">dell</button>
+                className="btn btn-danger mark-dell-element-button">
+                <i  className="fa fa-trash-o icon-from-mark-dell-button" >
+                </i></button>
             </div>   
         </li>
         );

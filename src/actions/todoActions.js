@@ -53,7 +53,7 @@ export const startEditTodo = (id)=>{
 export const stopEditTodo = (event,id)=>{
     return {
         type:"STOP_EDIT_TODO",
-        payload:{value:event.target.innerText.slice(0,-8),id}
+        payload:{value:event.target.innerText,id}
         //using slice cose mark and dell return as part of innerText
     }
 };

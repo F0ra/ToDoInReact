@@ -1,19 +1,26 @@
 .toDolist-button-group {
-  margin: -5px;
   float: right;
-}
-.list-group-item{
-  overflow: hidden;
-  /* margin-top: 20px; */
-  margin-bottom: 20px;
-  padding: 10px;
-  transition: all 0.3s ease-in-out;
-  
-}
-.mark-dell-element-button{
-margin: 1px;   
+  margin: 2px;
+  padding-left: 5px;
+  border-left: 1px solid rgb(122, 118, 118, 0.3);
+
 }
 
+.list-group-item{
+  overflow: hidden;
+  margin-bottom: 20px;
+  padding: 5px;
+  transition: all 0.3s ease-in-out;
+}
+
+.mark-dell-element-button {
+margin-left: 5px;   
+}
+
+.icon-from-mark-dell-button {
+  font-size: 24px;
+  color:rgb(242, 242, 242);
+}
 
 :root {
 --margin-offset: 100px; 
