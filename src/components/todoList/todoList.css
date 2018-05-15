@@ -3,5 +3,5 @@ li {
 }
 
 .todo-list-view{
-    height: 500px;
+    min-height: 300px;
 }

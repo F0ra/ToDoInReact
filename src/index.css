@@ -2,7 +2,6 @@ body {
   margin: 0;
   padding: 0;
   font-family: sans-serif;
-  overflow: hidden;
 }
 
 ul{
@@ -71,11 +70,8 @@ li{
   .chill{
     display: none;
   }
-  #root {
-    font-size: 17px;
-  }
   .dropdown-menu-button-small{
-    display: inherit;
+    display: initial;
   }
   .dropdown-menu-button-defolt{
     display: none;
@@ -83,16 +79,19 @@ li{
   .dell-all-button{
     display: none;
   }
-  .btn {
-    font-size:11px;
-    padding:4px 6px;
+  #root, .btn, .input-group{
+    font-size:16px;
   }
+  li {
+    text-indent: 5px;
+  }
+  .list-group-item{
+    margin-bottom: 6px;
+      }
 }
 
+
 @media only screen and (min-width: 340px) {
-  #root {
-    font-size: 17px;
-  }
   .dell-all-button{
     display: initial;
   }
@@ -102,36 +101,46 @@ li{
   .dropdown-menu-button-defolt{
     display: inherit;
   }
-  .btn {
-    font-size:12px;
-    padding:6px 12px;
+  #root, .btn, .input-group{
+    font-size:16px;
   }
+  li {
+    text-indent: 10px;
+  }
+  .list-group-item{
+    margin-bottom: 6px;
+      }
 }
 
 @media only screen and (min-width: 768px) {
-  #root {
-    font-size: 21px;
-    text-indent: 10px;
-  }
+
   h4{
     font-size: 32px;
   }
-  .btn {
-    font-size:14px;
-    padding:8px 12px;
+
+  #root, .btn, .input-group{
+    font-size:18px;
   }
+  li {
+    text-indent: 15px;
+  }
+  .list-group-item{
+    margin-bottom: 15px;
+      }
 } 
 
 @media only screen and (min-width: 992px) {
-  #root {
-    font-size: 25px;
-    text-indent: 15px;
-  }
+
   h4{
     font-size: 34px;
   }
-  .btn {
-    padding:10px 16px;
-    font-size:18px;
+  #root, .btn, .input-group {
+    font-size:21px;
   }
+  li {
+    text-indent: 20px;
+  }
+  .list-group-item{
+    margin-bottom: 20px;
+      }
 } 
