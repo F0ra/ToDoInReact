@@ -35,7 +35,7 @@ export const TodoElement = (props) => {
         
         {props.value}
 
-        <div className="toDolist-button-group">
+        <div className="toDolist-button-group" contentEditable={false}>
             <button onClick={()=>markCompleteTodoHandler(props.id)}
                 className="btn btn-success mark-dell-element-button">
                 <i className="fa fa-check-square-o icon-from-mark-dell-button" >
