@@ -64,11 +64,19 @@ export function timeTravel(reducer) {
                 return newState;
 
             case 'LOAD_STATE_FROM_LOCALSTORAGE':
-                if(localStorage.todoState.length){
-                    newState = JSON.parse(localStorage.todoState);
-                    action.payload.cb();
-                    return newState;
+                try{
+                    if(localStorage.todoState.length){
+                                        newState = JSON.parse(localStorage.todoState);
+                                        action.payload.cb();
+                                        return newState;
+                                    }
+
                 }
+                catch(error) {
+                    
+                    return state;
+                }
+                
                 return state;
             
 
