@@ -28,6 +28,7 @@ class TodoApp extends React.Component {
       ()=>{
         this.setState({todosStateLoaded:true})}
     );
+    setTimeout(()=>{this.setState({todosStateLoaded:false})},4100);//show info componet for 4 sec then unmount it
   };
 
   render() {
