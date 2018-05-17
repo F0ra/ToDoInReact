@@ -7,8 +7,8 @@ export class Addtodo extends React.Component {
         super(props);
         this.state={formValue:""}
         const elem = document.querySelector("body");
-        elem.onkeypress = (e)=>this.handleKeyPress(e)
-      
+        elem.onkeypress = (e)=>this.handleKeyPress(e);
+        
     };
     
     onChangeHandler = (e) => {
@@ -26,7 +26,8 @@ export class Addtodo extends React.Component {
         //     this.props.actions.addTodo(timeCreatedasId,value),
         //     this.props.paginationActions.setCurentPage(-1)
         // ])
-        this.setState({formValue:""})
+        this.setState({formValue:""});
+        this.props.updateTodoAppStateCallback(timeCreatedasId);
     };
 
     handleKeyPress = (event) => {
@@ -46,7 +47,8 @@ export class Addtodo extends React.Component {
         const timeCreatedasId = Date.now();
         this.props.actions.addTodo(timeCreatedasId,generatedTodo);
         this.props.paginationActions.resetPagination(-1);
-        this.setState({formValue:""})
+        this.setState({formValue:""});
+        this.props.updateTodoAppStateCallback(timeCreatedasId);
     };
 
     render(){

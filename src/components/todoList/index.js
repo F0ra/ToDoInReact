@@ -16,6 +16,7 @@ export const TodoList=(props)=>{
                 isEditing={todo.isEditing}
                 className={className}
                 actions={props.actions}
+                playAddTodoAnimation={props.listTodosIdForAnimation.includes(todo.id)}
             />)
         });
     return (

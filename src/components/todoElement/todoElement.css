@@ -56,3 +56,35 @@ animation-fill-mode: forwards;
 40%  {color: red;background-color:red; transform: scaleX(0.01) ; margin-left: var(--margin-offset)}
 100% {transform:  scaleX(0.01) translateY(-900px) ;margin-left: var(--margin-offset)}
 }
+
+.play-add-todo-animation {
+/* Safari 4.0 - 8.0 */
+-webkit-animation-name: addTodoAnimation;
+-webkit-animation-duration: 0.7s;
+-webkit-animation-timing-function: linear;
+-webkit-animation-fill-mode: forwards;
+animation-direction: reverse;
+/* Standard syntax */
+animation-name: addTodoAnimation;
+animation-duration: 0.7s;
+animation-timing-function: linear;
+animation-fill-mode: forwards;
+animation-direction: reverse;
+/* transform: scaleX(0.02)  translateX(500px); */
+
+/* background-color: red; */
+/* transition: all 1s ease-in-out; */
+  }
+
+  @-webkit-keyframes addTodoAnimation {
+    0%   {}
+    40%  {color: #37ac51;background-color:#37ac51; transform: scaleX(0.01) ; margin-left: var(--margin-offset)}
+    100% {transform:  scaleX(0.01) translateY(-900px) ;margin-left: var(--margin-offset)}
+  }
+  
+  /* Standard syntax */
+  @keyframes addTodoAnimation {
+  0%   {}
+  40%  {color: #37ac51;background-color:#37ac51; transform: scaleX(0.01) ; margin-left: var(--margin-offset)}
+  100% {transform:  scaleX(0.01) translateY(-900px) ;margin-left: var(--margin-offset)}
+  }

@@ -20,7 +20,8 @@ import { StateLoadInfo } from "../stateLoadInfo";
 class TodoApp extends React.Component {
   constructor(props){
     super(props);
-    this.state={todosStateLoaded:false}
+    this.state={todosStateLoaded:false,
+              listTodosIdForAnimation:[]}
   }
 
   componentDidMount() {
@@ -30,6 +31,22 @@ class TodoApp extends React.Component {
     );
     setTimeout(()=>{this.setState({todosStateLoaded:false})},4100);//show info componet for 4 sec then unmount it
   };
+
+  updateTodoAppStateCallback=(id,playAddTodoAnimation=true)=>{//method for animation add todo
+    let newIdList = [...this.state.listTodosIdForAnimation];
+    if(playAddTodoAnimation){
+      newIdList.push(id);
+      setTimeout(()=>{this.updateTodoAppStateCallback(id,false)},800);
+      const randomOffset = Math.floor((Math.random()-0.5)*100);//get random value for css animation
+      document.querySelector("#root").style.setProperty('--margin-offset', randomOffset + 'px');//pass randome value to css animation
+      }else{
+          newIdList = [...this.state.listTodosIdForAnimation
+          .filter((todosId)=>{
+          return todosId!==id})]
+      }
+         this.setState({listTodosIdForAnimation:newIdList})
+         
+  }
 
   render() {
     const StateInfo = this.state.todosStateLoaded ? <StateLoadInfo/> : null
@@ -44,13 +61,15 @@ class TodoApp extends React.Component {
         </div>
         <Addtodo actions={this.props.todoActions}
           paginationActions={this.props.paginationActions}
-          multipleActions={this.props.timeTravelActions.multipleActions}/>
+          multipleActions={this.props.timeTravelActions.multipleActions}
+          updateTodoAppStateCallback = {this.updateTodoAppStateCallback}/>
         <ViewTodoList 
           todos={this.props.todos.todosList}
           viewMode={this.props.viewMode}
           actions={this.props.todoActions}
           pagination={this.props.pagination}
-          paginationActions={this.props.paginationActions}/>
+          paginationActions={this.props.paginationActions}
+          listTodosIdForAnimation={this.state.listTodosIdForAnimation}/>
       </div>
     );
   }

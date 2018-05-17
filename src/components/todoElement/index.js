@@ -48,19 +48,16 @@ export const TodoElement = (props) => {
         </li>
         )
     };
-
+        let className="list-group-item mark-for-dell-all-button "
+        if(props.playAddTodoAnimation) className +=" play-add-todo-animation"
     return(
         
         <li onDoubleClick={()=>editTodoHandler(props.id)} 
             className={props.complited ? 
-                `list-group-item 
-                list-group-item-success 
-                mark-for-dell-complited-button
-                mark-for-dell-all-button`
+                className+=` list-group-item-success 
+                mark-for-dell-complited-button`
                 :
-                `list-group-item 
-                list-group-item-warning 
-                mark-for-dell-all-button`} >
+                className+=` list-group-item-warning `} >
             {props.value}
             
             <div className="toDolist-button-group">

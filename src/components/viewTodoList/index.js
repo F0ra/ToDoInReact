@@ -45,6 +45,7 @@ export const ViewTodoList = (props)=>{
         return(
             <div className="View-Todo-List">
                 <TodoList 
+                    listTodosIdForAnimation={props.listTodosIdForAnimation}
                     todos={viewTodos}
                     actions={props.actions}/>
                 <Pagination setCurentPage={props.paginationActions.setCurentPage} 
