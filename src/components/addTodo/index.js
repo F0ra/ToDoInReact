@@ -18,14 +18,21 @@ export class Addtodo extends React.Component {
     submitTodoHandler = (e) => {
         e.preventDefault();
         if(!this.state.formValue) return;
+        if(this.state.formValue === "black"){
+            document.querySelector("body").style.setProperty("--background-color", "black");
+            document.querySelector("body").style.setProperty("--title-text-color", "white");
+            this.setState({formValue:""});
+            return
+        }else if(this.state.formValue === "white"){
+            document.querySelector("body").style.setProperty("--background-color", "white");
+            document.querySelector("body").style.setProperty("--title-text-color", "black");
+            this.setState({formValue:""});
+            return
+        } ;
         const timeCreatedasId = Date.now();
         const value = this.state.formValue;
         this.props.actions.addTodo(timeCreatedasId,value);
         this.props.paginationActions.resetPagination(-1);
-        // this.props.multipleActions([
-        //     this.props.actions.addTodo(timeCreatedasId,value),
-        //     this.props.paginationActions.setCurentPage(-1)
-        // ])
         this.setState({formValue:""});
         this.props.updateTodoAppStateCallback(timeCreatedasId);
     };

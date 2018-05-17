@@ -1,3 +1,4 @@
 .todos-title{
     text-align: center;
+    color: var(--title-text-color);
 }
